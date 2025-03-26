@@ -180,9 +180,13 @@ function App() {
       }`}
     >
       {/* Header */}
-      <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50 py-2 px-4">
+      <header
+        className={`fixed top-0 left-0 w-full z-50 py-2 px-4 ${
+          isDarkMode ? "bg-gray-800" : "bg-white"
+        } shadow-md`}
+      >
         <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <h1 className="text-xl font-bold text-gray-900">Brunafolio</h1>
+          <h1 className="text-xl font-bold">Brunafolio</h1>
           <button
             onClick={toggleDarkMode}
             className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors"
@@ -193,68 +197,72 @@ function App() {
         </div>
       </header>
 
-      <div className="container mx-auto px-4 flex gap-8 pl-6">
-        {/* Left Sidebar */}
-        <div className="w-72 fixed left-0 top-16 h-full shadow-md p-6">
-          {/* Profile */}
-          <div className="flex items-center gap-4 mb-6">
-            <img
-              src="img/bruna.png"
-              alt="Profile"
-              className="w-12 h-12 rounded-full"
-            />
-            <span className="font-medium text-lg text-gray-900">
-              Bruna Zunzarren
-            </span>
-          </div>
+      <div className="max-w-7xl mx-auto px-4 pt-20 pb-10 flex flex-col lg:flex-row gap-8">
+        {/* Sidebar */}
+        <aside className="lg:w-1/4 w-full flex-shrink-0">
+          <div
+            className={`shadow-md p-6 rounded-xl ${
+              isDarkMode ? "bg-gray-800" : "bg-white"
+            }`}
+          >
+            {/* Profile */}
+            <div className="flex items-center gap-4 mb-6">
+              <img
+                src="img/bruna.png"
+                alt="Profile"
+                className="w-12 h-12 rounded-full"
+              />
+              <span className="font-medium text-lg">Bruna Zunzarren</span>
+            </div>
 
-          {/* Navigation Links */}
-          <nav className="space-y-2 mb-8">
-            {socialLinks.map((link) => (
-              <button
-                key={link.text}
-                onClick={() => handleSocialLinkClick(link.url)}
-                className="flex items-center gap-3 text-gray-700 hover:text-gray-900 text-lg py-1 w-full text-left transition-colors"
-              >
-                <div className="w-8 h-8">{link.icon}</div>
-                <span>{link.text}</span>
-              </button>
-            ))}
-          </nav>
-
-          {/* Latest Projects */}
-          <div>
-            <h2 className="text-lg font-medium text-gray-500 mb-4">
-              Meus Projetos
-            </h2>
-            <div className="space-y-4">
-              {projects.map((project) => (
+            {/* Social Links */}
+            <nav className="space-y-2 mb-8">
+              {socialLinks.map((link) => (
                 <button
-                  key={project.id}
-                  onClick={() => handleProjectClick(project.url)}
-                  className="flex items-center gap-4 text-gray-700 hover:text-gray-900 w-full text-left transition-colors"
+                  key={link.text}
+                  onClick={() => handleSocialLinkClick(link.url)}
+                  className="flex items-center gap-3 hover:text-gray-900 text-lg w-full text-left transition-colors"
                 >
-                  <div
-                    className={`w-8 h-8 rounded-full ${project.bgColor} flex items-center justify-center`}
-                  >
-                    {project.icon}
-                  </div>
-                  <span className="text-lg">{project.name}</span>
+                  <div className="w-8 h-8">{link.icon}</div>
+                  <span>{link.text}</span>
                 </button>
               ))}
+            </nav>
+
+            {/* Projects in sidebar */}
+            <div>
+              <h2 className="text-lg font-medium text-gray-500 mb-4">
+                Meus Projetos
+              </h2>
+              <div className="space-y-4">
+                {projects.map((project) => (
+                  <button
+                    key={project.id}
+                    onClick={() => handleProjectClick(project.url)}
+                    className="flex items-center gap-4 hover:text-gray-900 w-full text-left transition-colors"
+                  >
+                    <div
+                      className={`w-8 h-8 rounded-full ${project.bgColor} flex items-center justify-center`}
+                    >
+                      {project.icon}
+                    </div>
+                    <span className="text-sm md:text-base">{project.name}</span>
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        </aside>
 
         {/* Main Content */}
-        <div className="w-[800px] mx-auto">
+        <main className="flex-1 w-full">
           {/* Social Cards */}
           <div className="flex gap-4 overflow-x-auto pb-4 mb-8">
             {socialLinks.slice(currentSlide, currentSlide + 3).map((link) => (
               <button
                 key={link.text}
                 onClick={() => handleSocialLinkClick(link.url)}
-                className="relative w-36 h-64 rounded-2xl p-4 text-white flex flex-col justify-between shadow-lg hover:opacity-90 transition-opacity overflow-hidden"
+                className="relative min-w-[9rem] h-64 rounded-2xl p-4 text-white flex flex-col justify-between shadow-lg hover:opacity-90 transition-opacity overflow-hidden"
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center filter blur-xl scale-110"
@@ -277,7 +285,7 @@ function App() {
           </div>
 
           {/* About Section */}
-          <div
+          <section
             className={`${
               isDarkMode ? "bg-gray-800" : "bg-white"
             } rounded-xl p-6 mb-8`}
@@ -291,17 +299,17 @@ function App() {
               <h2 className="font-medium">Quem é, Bruna?</h2>
             </div>
             <p className={isDarkMode ? "text-gray-300" : "text-gray-600"}>
-              Sou uma desenvolvedora Full Stack com sólida experiência na
-              construção e otimização de sistemas web completos. Tenho expertise
-              no desenvolvimento de soluções robustas utilizando Node.js, PHP,
+              Sou desenvolvedora Full Stack com sólida experiência na construção
+              e otimização de sistemas web completos. Tenho expertise no
+              desenvolvimento de soluções robustas utilizando Node.js, PHP,
               Bootstrap, MySQL, Tailwind, Java entre outras tecnologias, com
               foco em qualidade de código e performance.
             </p>
-          </div>
+          </section>
 
-          {/* Projects Showcase */}
+          {/* Project List */}
           {projects.map((project) => (
-            <div
+            <section
               key={project.id}
               className={`${
                 isDarkMode ? "bg-gray-800" : "bg-white"
@@ -334,9 +342,9 @@ function App() {
                   className="w-full h-full object-cover"
                 />
               </div>
-            </div>
+            </section>
           ))}
-        </div>
+        </main>
       </div>
     </div>
   );
