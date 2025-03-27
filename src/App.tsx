@@ -299,11 +299,7 @@ function App() {
               <h2 className="font-medium">Quem é, Bruna?</h2>
             </div>
             <p className={isDarkMode ? "text-gray-300" : "text-gray-600"}>
-              Sou desenvolvedora Full Stack com sólida experiência na construção
-              e otimização de sistemas web completos. Tenho expertise no
-              desenvolvimento de soluções robustas utilizando Node.js, PHP,
-              Bootstrap, MySQL, Tailwind, Java entre outras tecnologias, com
-              foco em qualidade de código e performance.
+             Sou desenvolvedora Full Stack com ampla experiência na construção e otimização de sistemas web completos. Especializo-me no desenvolvimento de soluções eficientes e escaláveis, utilizando tecnologias como Node.js, PHP, Bootstrap, MySQL, Tailwind, Java, entre outras. Meu foco está na qualidade do código, na performance e na criação de aplicações robustas que oferecem uma experiência fluida e otimizada para os usuários.
             </p>
           </section>
 
