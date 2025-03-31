@@ -72,7 +72,7 @@ function App() {
       id: "baseball",
       name: "Blog de Notícias Automático",
       date: "Jan 2023 - Mar 2023",
-      url: "/projects/baseball",
+      url: "https://bzunzarren.github.io/BlogAutomatico/",
       icon: <Activity className="w-15 h-15 text-red-500" />, // Substituindo pelo ícone Activity
       description:
         "Sistema automatizado de geração de notícias utilizando IA, desenvolvido com Node.js e MongoDB. Integração com APIs de notícias.",
