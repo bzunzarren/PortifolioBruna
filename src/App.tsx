@@ -84,7 +84,7 @@ function App() {
       id: "proanimals",
       name: "Sistema Da Cabeça ao Pé",
       date: "Jun 2023 - Aug 2023",
-      url: "https://github.com/bzunzarren/SistemaDaCabe-aaoPe.git",
+      url: "https://lojadacabecaaope.com/index.php",
       icon: <img src="img/cbap.png" alt="Logo" className="w-15 h-15" />,
       description:
         "Sistema de gestão para controle de cliente, fornecedores, estoque e financeiro. Desenvolvido com php e MySQL.",
